@@ -1,0 +1,83 @@
+{
+  "kind": "build_request",
+  "title": "Add customizable feelings paragraph shown after clicking “Yes”",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Add a customizable multi-line “feelings” paragraph that is displayed on the celebration screen after the user clicks the “Yes! 💖” button.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "can i add a paragraph of my feelings after yes is clicked?"
+        ]
+      },
+      "acceptanceCriteria": [
+        "When the user clicks “Yes! 💖” on the proposal page, the app navigates to the existing celebration screen and shows an additional paragraph of text (the user’s feelings) within the celebration card.",
+        "If the user has not customized the feelings text, a reasonable default message is shown in English.",
+        "The feelings paragraph is visually distinct from the existing fixed celebration lines (e.g., spacing/typography) and does not break the layout on mobile."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Extend the existing in-app “Customize Your Valentine 💕” panel to allow the user to enter/edit the feelings paragraph (multi-line text) that will be shown on the celebration screen.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "can i add a paragraph of my feelings after yes is clicked?"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The customize panel includes a clearly labeled text input (textarea) for the feelings paragraph.",
+        "The user can type/paste multi-line text and see that it is included when they click “Apply Changes”.",
+        "The user can clear or revert the feelings paragraph using the existing “Reset to Defaults” action (restoring the default feelings text)."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Persist the customized feelings paragraph locally in the browser, consistent with the existing photo/music customization persistence, so a refresh does not lose the feelings text.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "can i add a paragraph of my feelings after yes is clicked?"
+        ]
+      },
+      "acceptanceCriteria": [
+        "After setting a feelings paragraph and clicking “Apply Changes”, refreshing the page retains the same feelings text.",
+        "Using “Reset to Defaults” removes the customized feelings text and restores the default message on the next celebration view.",
+        "Persistence does not require any backend canister changes."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not edit files in frontend immutable paths (e.g., frontend/src/hooks/useInternetIdentity.ts(x), frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or any sources under frontend/src/components/ui).",
+    "Keep all backend logic within the existing single Motoko actor (backend/main.mo); no backend changes are required for this feature."
+  ],
+  "nonGoals": [
+    "Do not add third-party authentication providers or any external database for storing the feelings text.",
+    "Do not introduce real-time synchronization of the feelings text across devices/users."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

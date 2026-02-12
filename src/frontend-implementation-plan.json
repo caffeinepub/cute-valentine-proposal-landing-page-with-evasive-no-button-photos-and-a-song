@@ -1,0 +1,70 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Customizable feelings paragraph on celebration + customization + local persistence",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Display a customizable multi-line feelings paragraph inside the celebration card after the user clicks “Yes! 💖”, with a sensible English default and mobile-safe styling.",
+      "acceptanceCriteria": [
+        "When the user clicks “Yes! 💖” on the proposal page, the app navigates to the existing celebration screen and shows an additional paragraph of text (the user’s feelings) within the celebration card.",
+        "If the user has not customized the feelings text, a reasonable default message is shown in English.",
+        "The feelings paragraph is visually distinct from the existing fixed celebration lines (e.g., spacing/typography) and does not break the layout on mobile."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/CelebrationState.tsx",
+          "operation": "modify",
+          "description": "Read the feelings text from the existing CustomMedia context and render it as a visually distinct, multi-line paragraph within the celebration card (use whitespace-preserving rendering and responsive spacing/typography so it remains readable on mobile). Leverage existing shadcn-ui Card layout already used here. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/context/CustomMediaContext.tsx",
+          "operation": "modify",
+          "description": "Add a default feelings message and expose the resolved feelings text (customized or default) via the context so CelebrationState can display it reliably. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Extend the existing “Customize Your Valentine 💕” panel with a labeled multi-line textarea to edit the feelings paragraph, applied via “Apply Changes” and reset via “Reset to Defaults”.",
+      "acceptanceCriteria": [
+        "The customize panel includes a clearly labeled text input (textarea) for the feelings paragraph.",
+        "The user can type/paste multi-line text and see that it is included when they click “Apply Changes”.",
+        "The user can clear or revert the feelings paragraph using the existing “Reset to Defaults” action (restoring the default feelings text)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/CustomizeMediaPanel.tsx",
+          "operation": "modify",
+          "description": "Add a new 'Feelings' section to the existing shadcn-ui Dialog content that includes a clearly labeled multi-line textarea. Wire textarea changes into local draft state and into CustomMedia context preview so 'Apply Changes' commits the text and 'Reset to Defaults' restores the default feelings. Update the panel's 'hasChanges' logic to include feelings edits. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/context/CustomMediaContext.tsx",
+          "operation": "modify",
+          "description": "Extend the context API to support feelings editing from the customize panel (e.g., expose current feelings text, a preview setter for pending edits, and ensure apply/reset flows incorporate feelings alongside existing photo/audio customization). Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Persist the feelings paragraph locally in the browser so refresh retains it, and ensure Reset to Defaults clears the custom value and restores the default without any backend changes.",
+      "acceptanceCriteria": [
+        "After setting a feelings paragraph and clicking “Apply Changes”, refreshing the page retains the same feelings text.",
+        "Using “Reset to Defaults” removes the customized feelings text and restores the default message on the next celebration view.",
+        "Persistence does not require any backend canister changes."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/lib/customMediaStorage.ts",
+          "operation": "modify",
+          "description": "Extend the existing IndexedDB storage helper to support storing/loading a text value for the feelings paragraph (e.g., via a dedicated record saved as a text/plain Blob or an explicit text type) so persistence matches the existing photo/music approach."
+        },
+        {
+          "path": "frontend/src/context/CustomMediaContext.tsx",
+          "operation": "modify",
+          "description": "Load the persisted feelings text on mount alongside existing media, save it during 'Apply Changes', and clear it during 'Reset to Defaults' (which should restore the default feelings message after refresh as well). Verify the component's usage instructions before implementing."
+        }
+      ]
+    }
+  ]
+}

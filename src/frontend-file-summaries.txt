@@ -1,0 +1,15 @@
+{
+  "frontend/src/App.tsx": "Main app component wrapping ValentineProposalPage with CustomMediaProvider for shared custom media state.",
+  "frontend/src/pages/ValentineProposalPage.tsx": "Main Valentine proposal page with the question, Yes/No buttons (with evasive No button), photo collage, audio player, decorations, and celebration state management.",
+  "frontend/src/components/CelebrationState.tsx": "Celebration screen shown after clicking \"Yes\" with animated hearts, success message, customizable feelings paragraph displayed in a styled box, and photo collage display.",
+  "frontend/src/components/PhotoCollage.tsx": "Photo gallery component displaying three couple photos from CustomMediaContext in polaroid-style frames with rotation effects and loading state.",
+  "frontend/src/components/AudioPlayer.tsx": "Audio player with play/pause/mute controls, customize button that opens CustomizeMediaPanel, and dynamic audio source from CustomMediaContext.",
+  "frontend/src/components/ValentineDecor.tsx": "Decorative layer component rendering background patterns, glitter overlay, and floating heart stickers from static assets.",
+  "frontend/src/hooks/useEvasivePosition.ts": "Custom hook managing the evasive \"No\" button behavior, calculating safe random positions within viewport bounds on hover/touch events.",
+  "frontend/src/hooks/useQueries.ts": "Empty file as no backend queries are needed for this static Valentine proposal application.",
+  "frontend/src/index.css": "Global styles with cute/girlish OKLCH color palette (soft pinks, creams, rose tones), custom animations (float, float-up, bounce-slow, spin-slow), and Quicksand font family.",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with rose color palette, increased border radius values, soft shadows, Quicksand font, and custom animation keyframes.",
+  "frontend/src/lib/customMediaStorage.ts": "IndexedDB-based storage helper for persisting custom photos, audio, and feelings text as Blobs with safe error handling and fallback to defaults, now supporting 'text' type for feelings paragraph.",
+  "frontend/src/context/CustomMediaContext.tsx": "React context provider managing custom media state (3 photos, audio, and feelings text), loading persisted media on mount, applying changes, and resetting to defaults with URL cleanup and default feelings message.",
+  "frontend/src/components/CustomizeMediaPanel.tsx": "Modal dialog component for uploading/previewing up to 3 photos, 1 audio file, and editing a multi-line feelings textarea, with apply/reset actions and help section explaining permanent file replacement."
+}

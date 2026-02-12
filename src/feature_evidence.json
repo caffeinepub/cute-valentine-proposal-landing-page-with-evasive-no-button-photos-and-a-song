@@ -1,0 +1,62 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-add-a-customizable-multi-line-feelings-paragraph-that-is-displayed-on-the-celebration-screen-after-the-user-clicks-the-yes-button",
+      "featureTitle": "Add a customizable multi-line “feelings” paragraph that is displayed on the celebration screen after the user clicks the “Yes! 💖” button.",
+      "files": [
+        "frontend/src/components/CelebrationState.tsx",
+        "frontend/src/context/CustomMediaContext.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-extend-the-existing-in-app-customize-your-valentine-panel-to-allow-the-user-to-enter-edit-the-feelings-paragraph-multi-line-text-that-will-be-shown-on-the-celebration-screen",
+      "featureTitle": "Extend the existing in-app “Customize Your Valentine 💕” panel to allow the user to enter/edit the feelings paragraph (multi-line text) that will be shown on the celebration screen.",
+      "files": [
+        "frontend/src/components/CustomizeMediaPanel.tsx",
+        "frontend/src/context/CustomMediaContext.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-persist-the-customized-feelings-paragraph-locally-in-the-browser-consistent-with-the-existing-photo-music-customization-persistence-so-a-refresh-does-not-lose-the-feelings-text",
+      "featureTitle": "Persist the customized feelings paragraph locally in the browser, consistent with the existing photo/music customization persistence, so a refresh does not lose the feelings text.",
+      "files": [
+        "frontend/src/context/CustomMediaContext.tsx",
+        "frontend/src/lib/customMediaStorage.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    }
+  ]
+}
